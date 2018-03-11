@@ -23,7 +23,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', icon: "home", component: HomePage },
       { title: 'Login', icon: "log-in", component: 'LoginPage' },
-      { title: 'Trashure Quiz', icon: "help", component: 'QuizPage' },
+      { title: 'Register', icon: "create", component: 'RegisterPage' },
+      { title: 'Trashure Quiz', icon: "help-circle", component: 'QuizPage' },
       { title: 'Recycling', icon: "leaf", component: 'RecyclingPage' },
       { title: 'Scan QR!', icon: "qr-scanner", component: 'ScanqrPage' },
       { title: 'Contact us', icon: "chatbubbles", component: 'ContactPage' },
