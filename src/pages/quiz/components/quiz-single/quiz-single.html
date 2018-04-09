@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-list>
+    <ion-grid *ngFor="let question of quiz.questions">
+      <ion-row>
+        {{question.question}}
+      </ion-row>
+      <ion-col *ngFor="let answer of question.answers">
+        {{answer.title}}
+      </ion-col>
+    </ion-grid>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from
+    <b>{{selectedItem.title}}</b>
+  </div> -->
+  <div style="min-height: 50px">
+    <ion-grid no-padding id="quiz-grid" *ngIf="quiz">
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <!-- <ion-col  col-1 *ngFor="let question of quiz.questions;let item = index;"> -->
+        <ion-col *ngFor="let item of wrongArray; let i = index;">
+          <button [disabled]="slides._activeIndex === i" [ngClass]="{'wrong': !item}" full block ion-button (tap)="slide(i)">
+            {{i+1}}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-slides [pager]="true" [paginationType]="'progress'" *ngIf="quiz">
+    <ion-slide *ngFor="let question of quiz.questions;let q = index;">
+      <ion-card>
+        <ion-card-content>
+          {{question.question}}
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <button [ngClass]="{'wrong': completed && !question.answers[0].correct}" [disabled]="question.answers[0].selected" full block
+                  ion-button (tap)="select(q, 0)">{{question.answers[0].title}}</button>
+              </ion-col>
+              <ion-col col-6>
+                <button [ngClass]="{'wrong': completed && !question.answers[1].correct}" [disabled]="question.answers[1].selected" full block
+                  ion-button (tap)="select(q, 1)">{{question.answers[1].title}}</button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6>
+                <button [ngClass]="{'wrong': completed && !question.answers[2].correct}" [disabled]="question.answers[2].selected" full block
+                  ion-button (tap)="select(q, 2)">{{question.answers[2].title}}</button>
+              </ion-col>
+              <ion-col col-6>
+                <button [ngClass]="{'wrong': completed && !question.answers[3].correct}" [disabled]="question.answers[3].selected" full block
+                  ion-button (tap)="select(q, 3)">{{question.answers[3].title}}</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <!-- <img style="margin:auto" src='{{item.image}}' onError="this.src='assets/imgs/insert-here.png'" /> {{displayText | slice:0:200}}... -->
+          <!-- <button ion-button (click)="showDetails(item)">Read more...</button> -->
+          <!-- <button ion-button *ngFor="let answer of question.answers">
+            {{answer.title}}
+          </button> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

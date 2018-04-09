@@ -18,6 +18,7 @@ import { HttpModule, Http,  } from '@angular/http';
 
 // TODO move
 import { RecyclingDetails } from '../pages/recycling/recycling-details';
+import { QuizSinglePage } from '../pages/quiz/components/quiz-single/quiz-single';
 
 
 export function createTranslateLoader(http: Http) {
@@ -27,7 +28,7 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    RecyclingDetails,
+    RecyclingDetails, QuizSinglePage,
     ListPage,
     LogoutPage
   ],
@@ -45,7 +46,7 @@ export function createTranslateLoader(http: Http) {
   entryComponents: [
     MyApp,
     RecyclingDetails,
-    ListPage,
+    ListPage, QuizSinglePage,
     LogoutPage
   ],
   providers: [
