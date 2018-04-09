@@ -15,6 +15,11 @@ import { LocalProvidersModule } from '../providers/local-providers.module';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 import { HttpModule, Http,  } from '@angular/http';
 
+
+// TODO move
+import { RecyclingDetails } from '../pages/recycling/recycling-details';
+
+
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }
@@ -22,7 +27,7 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    // HomePage,
+    RecyclingDetails,
     ListPage,
     LogoutPage
   ],
@@ -39,7 +44,7 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    // HomePage,
+    RecyclingDetails,
     ListPage,
     LogoutPage
   ],

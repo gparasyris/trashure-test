@@ -17,5 +17,26 @@
 
 
 <ion-content padding>
+  <ion-grid style="height: 100%">
+    <ion-row style="height: 100%">
+      <ion-col align-self-center>
+        <ion-slides [pager]="true" *ngIf="data?.length">
+          <ion-slide *ngFor="let item of data">
+            <ion-card>
+              <ion-card-header>
+                {{item.title}}
+              </ion-card-header>
+              <ion-card-content>
+                <img style="margin:auto" src='{{item.image}}' onError="this.src='assets/imgs/insert-here.png'" /> {{displayText | slice:0:200}}...
+                <button ion-button (click)="showDetails(item)">Read more...</button>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <div style="margin: auto;">
 
+  </div> -->
 </ion-content>

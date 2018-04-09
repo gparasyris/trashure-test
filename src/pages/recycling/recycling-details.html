@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid padding>
+    <ion-row id="image-row">
+      <img style="margin:auto" src='{{item.image}}' onError="this.src='assets/imgs/insert-here.png'" />
+    </ion-row>
+    <ion-row>
+      {{displayText | slice:0:200}}... {{item.details}}
+    </ion-row>
+  </ion-grid>
+</ion-content>
