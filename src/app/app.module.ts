@@ -3,8 +3,10 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { LogoutPage } from '../pages/logout/logout';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,8 +22,9 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    // HomePage,
+    ListPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -36,8 +39,9 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    // HomePage,
+    ListPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,

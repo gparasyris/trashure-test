@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
+import { LogoutPage } from '../pages/logout/logout';
 import { AuthenticationProvider } from '../providers/local-providers.module';
 
 @Component({
@@ -24,7 +24,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', icon: "home", component: HomePage },
+      { title: 'Home', icon: "home", component: 'HomePage' },
       { title: 'Login', icon: "log-in", component: 'LoginPage' },
       { title: 'Register', icon: "create", component: 'RegisterPage' },
       { title: 'Trashure Quiz', icon: "help-circle", component: 'QuizPage' },
@@ -32,7 +32,7 @@ export class MyApp {
       { title: 'Scan QR!', icon: "qr-scanner", component: 'ScanqrPage' },
       { title: 'Contact us', icon: "chatbubbles", component: 'ContactPage' },
       { title: 'About', icon: "information-circle", component: 'AboutPage' },
-      { title: 'Log out', icon: "log-out", component: ListPage }
+      { title: 'Log out', icon: "log-out", component: LogoutPage }
     ];
 
   }
@@ -44,7 +44,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (this.authenticationProvider.checkCredentials()) {
-        this.rootPage = HomePage;
+        this.rootPage = 'HomePage';
       }
       else{
         this.rootPage = 'LoginPage';

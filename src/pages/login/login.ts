@@ -42,7 +42,7 @@ export class LoginPage {
     this.authenticationProvider.login(user)
       .then((success) => {
         console.log('navigate to login page');
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot('HomePage');
       })
       .catch(err => {
         console.log(err);

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { text } from '../../assets/data/loremipsum';
 
 /**
  * Generated class for the AboutPage page.
@@ -14,8 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-
+  displayText;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.displayText = text;
   }
 
   ionViewDidLoad() {
