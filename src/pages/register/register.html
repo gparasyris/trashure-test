@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Register</ion-title>
   </ion-navbar>
 
@@ -14,5 +17,80 @@
 
 
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8 class="formcontainer">
+        <!-- <ion-label text-right>* {{generalLabels.mandatory.title | translate}}</ion-label> -->
+        <!-- <ion-label text-right>* {{generalLabels.mandatory.title | translate}}</ion-label> -->
+        <form [formGroup]="registerForm">
+          <ion-row>
+            <ion-col col-12>
+              <!-- name -->
+              <ion-row>
+                <ion-label class="inlineInput">
+                  {{'REGISTER.NAME' | translate}}:
+                </ion-label>
+                <ion-item class="transparentBg">
+                  <ion-input formControlName="name"></ion-input>
+                </ion-item>
+              </ion-row>
+              <!-- surname -->
+              <ion-row>
+                <ion-label class="inlineInput">
+                  {{'REGISTER.SURNAME' | translate}}:
+                  <!-- Surname -->
+                </ion-label>
+                <ion-item class="transparentBg">
+                  <ion-input formControlName="surname"></ion-input>
+                </ion-item>
+              </ion-row>
+              <ion-row>
+                <ion-label class="inlineInput">
+                  {{'REGISTER.USERNAME' | translate}}:
+                  <!-- Username -->
+                </ion-label>
+                <ion-item class="transparentBg">
+                  <ion-input formControlName="username"></ion-input>
+                </ion-item>
+              </ion-row>
+              <!-- pin code -->
+              <ion-row>
+                <ion-label class="inlineInput">
+                  *{{'REGISTER.PINCODE' | translate}}:
+                  <!-- * PIN Code -->
+                </ion-label>
+                <ion-item class="transparentBg">
+                  <ion-input formControlName="pin" type="password"></ion-input>
+                </ion-item>
+              </ion-row>
+              <!-- pin code confirmation-->
+              <ion-row>
+                <ion-label class="inlineInput">
+                  *{{'REGISTER.CONFIRMPINCODE'| translate}}:
+                  <!-- * Confirm PIN Code -->
+                </ion-label>
+                <ion-item class="transparentBg">
+                  <ion-input formControlName="pinConfirm" type="password"></ion-input>
+                </ion-item>
+              </ion-row>
+              <!-- e-mail -->
+              <ion-row>
+                <ion-label class="inlineInput">
+                  {{'REGISTER.EMAIL' | translate}}:
+                  <!-- E-mail -->
+                </ion-label>
+                <ion-item class="transparentBg">
+                  <ion-input formControlName="email"></ion-input>
+                </ion-item>
+              </ion-row>
+            </ion-col>
+            <ion-row>
+              <button ion-button [disabled]="!registerForm.valid || this.registerForm.controls.pin.value !== this.registerForm.controls.pinConfirm.value"
+                (tap)="register()" id="save-button"> {{'REGISTER.REGISTER_USER' | translate}} </button>
+            </ion-row>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
