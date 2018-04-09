@@ -42,12 +42,13 @@ export class RegisterPage {
       'name': this.registerForm.controls.name.value,
       'surname': this.registerForm.controls.surname.value,
       'username': this.registerForm.controls.username.value,
-      'pin': this.registerForm.controls.pin.value,
+      'password': this.registerForm.controls.pin.value,
       'email': this.registerForm.controls.email.value,
     };
-    this.authenticationProvider.register(newUser).then
-      ((success) => {
+    this.authenticationProvider.register(newUser)
+      .then((success) => {
         console.log('navigate to login page');
+        this.navCtrl.setRoot('LoginPage');
       })
       .catch(err => {
         console.log(err);

@@ -24,14 +24,14 @@ export class AuthenticationProvider {
     return new Promise((resolve, reject) => {
       try {
         let users = JSON.parse(localStorage.getItem('users'));
-        if(!users) users = [];
+        if (!users) users = [];
         let user = users.find(u => u.username === newUser.username);
-        if(!user){
-          users.push({ username: newUser.username, password: newUser.password });
+        if (!user) {
+          users.push(newUser);
           localStorage.setItem('users', JSON.stringify(users));
           resolve(true);
         }
-        else{
+        else {
           reject('ERRORS.REGISTER.USERNAME_EXISTS');
         }
 
@@ -45,14 +45,21 @@ export class AuthenticationProvider {
     localStorage.removeItem('logged');
   }
 
-  login(name) {
-    let users = JSON.parse(localStorage.getItem('users'));
-    let authenticatedUser = users.find(u => u.name === name);
-    if (authenticatedUser) {
-      localStorage.setItem('logged', JSON.stringify(authenticatedUser));
-      return true;
-    }
-    return false;
+  login(user) {
+    return new Promise((resolve, reject) => {
+      let users = JSON.parse(localStorage.getItem('users'));
+      let authenticatedUser = users.find(u => u.username === user.username);
+      if (authenticatedUser) {
+        if(authenticatedUser.password === user.password){
+          localStorage.setItem('logged', JSON.stringify(authenticatedUser));
+          resolve(authenticatedUser);
+        }
+        else{
+          reject('ERRORS.LOGIN_CREDENTIALS');
+        }
+      }
+      reject('ERRORS.LOGIN_CREDENTIALS');
+    })
   }
 
   checkCredentials() {
