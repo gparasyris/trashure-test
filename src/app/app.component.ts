@@ -6,17 +6,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+import { AuthenticationProvider } from '../providers/local-providers.module';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'RegisterPage';
+  rootPage: any;
 
   pages: Array<{ title: string, component: any, icon?: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+    private authenticationProvider: AuthenticationProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -40,6 +43,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      if (this.authenticationProvider.checkCredentials()) {
+        this.rootPage = HomePage;
+      }
+      else{
+        this.rootPage = 'LoginPage';
+      }
     });
   }
 

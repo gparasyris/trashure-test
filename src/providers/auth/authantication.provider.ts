@@ -59,6 +59,7 @@ export class AuthenticationProvider {
         }
       }
       reject('ERRORS.LOGIN_CREDENTIALS');
+
     })
   }
 

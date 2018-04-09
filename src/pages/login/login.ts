@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { AuthenticationProvider } from '../../providers/local-providers.module';
-
+import { HomePage } from '../home/home';
 /**
  * Generated class for the LoginPage page.
  *
@@ -29,6 +29,9 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    if (this.authenticationProvider.checkCredentials()) {
+      this.navCtrl.setRoot(HomePage);
+    }
   }
 
   login() {
@@ -39,7 +42,7 @@ export class LoginPage {
     this.authenticationProvider.login(user)
       .then((success) => {
         console.log('navigate to login page');
-        this.navCtrl.setRoot('LoginPage');
+        this.navCtrl.setRoot(HomePage);
       })
       .catch(err => {
         console.log(err);
