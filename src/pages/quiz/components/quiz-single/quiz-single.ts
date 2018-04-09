@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
+import { UserProvider } from '../../../../providers/local-providers.module';
 
 @Component({
   selector: 'quiz-single',
@@ -21,7 +22,7 @@ export class QuizSinglePage {
   wrongArray: boolean[];
   navigated: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider) {
     this.wrongArray = [];
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -73,6 +74,7 @@ export class QuizSinglePage {
         this.wrongArray.push(false);
       }
     }
+    this.userProvider.setScore(this.quiz.id, this.score)
   }
 
   slide(num) {

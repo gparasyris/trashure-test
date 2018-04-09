@@ -3,10 +3,11 @@ import { IonicModule } from 'ionic-angular';
 
 /* Importing Local Providers */
 import { AuthenticationProvider } from './auth/authantication.provider';
-
+import { UserProvider } from './user/user.provider';
 /* Exporting  Classes, Providers, Interfaces the "regular" way */
 export {
-  AuthenticationProvider
+  AuthenticationProvider,
+  UserProvider
 };
 
 @NgModule({
@@ -20,7 +21,8 @@ export class LocalProvidersModule {
     return {
       ngModule: LocalProvidersModule,
       providers: [
-        AuthenticationProvider
+        AuthenticationProvider,
+        UserProvider
       ]
     };
   }

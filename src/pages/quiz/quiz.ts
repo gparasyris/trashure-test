@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { quizes } from '../../assets/data/quizes';
 import { QuizSinglePage } from './components/quiz-single/quiz-single';
+import { UserProvider } from '../../providers/local-providers.module';
+
 /**
  * Generated class for the QuizPage page.
  *
@@ -16,12 +18,13 @@ import { QuizSinglePage } from './components/quiz-single/quiz-single';
 })
 export class QuizPage {
   quizes: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
     this.quizes = quizes;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuizPage');
+    console.log(this.userProvider.quizes);
   }
 
   itemTap(quiz){

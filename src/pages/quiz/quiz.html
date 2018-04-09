@@ -19,7 +19,16 @@
 <ion-content padding>
   <ion-list no-lines>
     <button ion-item *ngFor="let quiz of quizes" (tap)="itemTap(quiz)">
-      {{quiz.title}}
+      <ion-grid>
+        <ion-col col-12>
+          <ion-col col-3>
+            {{quiz.title}}
+          </ion-col>
+          <ion-col col-9>
+           {{ userProvider.user.quizes[quiz.id] ? userProvider.user.quizes[quiz.id] : '0'}} / {{ quiz.questions.length}}
+          </ion-col>
+        </ion-col>
+      </ion-grid>
     </button>
   </ion-list>
 </ion-content>

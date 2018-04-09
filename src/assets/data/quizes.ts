@@ -1,5 +1,6 @@
 export let quizes = [{
-	"title": "Quiz 1",
+  "title": "Quiz 1",
+  "id": 0,
 	"questions": [{
 		"question": "1.1.  Which of the following can be recycled?",
 		"answers": [{
@@ -152,7 +153,8 @@ export let quizes = [{
 		}]
 	}]
 }, {
-	"title": "Quiz 2",
+  "title": "Quiz 2",
+  "id": 1,
 	"questions": [{
 		"question": "2.1. One recycled tin can would save enough energy to power a television for ___.",
 		"answers": [{
@@ -305,7 +307,8 @@ export let quizes = [{
 		}]
 	}]
 }, {
-	"title": "Quiz 3",
+  "title": "Quiz 3",
+  "id": 2,
 	"questions": [{
 		"question": "3.1. Which of the following statements is true?",
 		"answers": [{

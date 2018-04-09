@@ -14,7 +14,7 @@ export class LogoutPage {
       @Inject(forwardRef(() => AuthenticationProvider)) private authentication: AuthenticationProvider
       ) {
       this.authentication.logout();
-      this.nav.setRoot(LoginPage, {
+      this.nav.setRoot('LoginPage', {
         sent: 'logout'
       });
     }

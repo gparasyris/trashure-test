@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
-import { AuthenticationProvider } from '../../providers/local-providers.module';
+import { AuthenticationProvider, UserProvider } from '../../providers/local-providers.module';
 import { HomePage } from '../home/home';
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +19,8 @@ export class LoginPage {
   loginForm: FormGroup;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private authenticationProvider: AuthenticationProvider,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private userProvider: UserProvider
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -42,6 +43,7 @@ export class LoginPage {
     this.authenticationProvider.login(user)
       .then((success) => {
         console.log('navigate to login page');
+        this.userProvider.setUser(success);
         this.navCtrl.setRoot('HomePage');
       })
       .catch(err => {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { UserProvider } from '../user/user.provider';
 
 export class IPages {
   title: string;
@@ -15,7 +16,7 @@ export class AuthenticationProvider {
   pages: IPages[] = [];
   pagesObservable: Subject<IPages[]>;
 
-  constructor() {
+  constructor(private userProvider: UserProvider) {
     this.check = {};
     this.pagesObservable = <Subject<IPages[]>>new Subject();
   }
@@ -68,7 +69,9 @@ export class AuthenticationProvider {
     if (!isLoggedIn) {
       return null;
     }
-    return JSON.parse(isLoggedIn);
+    let user = JSON.parse(isLoggedIn);
+    this.userProvider.setUser(user);
+    return user;
   }
 
 }
