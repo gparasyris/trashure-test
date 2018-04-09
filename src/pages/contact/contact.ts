@@ -14,7 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contact.html',
 })
 export class ContactPage {
-
+  subject: string = '';
+  message: string = '';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

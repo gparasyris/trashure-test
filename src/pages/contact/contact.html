@@ -17,5 +17,35 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Subject</ion-label>
+      <ion-input type="text" [(ngModel)]="subject"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Message</ion-label>
+      <ion-textarea id="message-area" [(ngModel)]="message"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="send(recipient, subject, message)">Send</button>
+  </div>
+  <ion-grid>
+    <ion-row nowrap>
+      <ion-col col-2>
+        Telephone:
+      </ion-col>
+      <ion-col>
+        +12 345 678 90123
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        Address:
+      </ion-col>
+      <ion-col>
+        Some Address 27, SomeCity, 74 922 UK
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
